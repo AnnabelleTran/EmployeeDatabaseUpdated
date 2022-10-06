@@ -1,0 +1,38 @@
+<%- include('partials/header') -%>
+
+<div class="container mt-5">
+    <%- include('partials/messages') -%>
+    <body>
+        <h1 class = "employeeedit">Employees</h1>
+        <div class = "employeeinfo">
+      <ul>
+            <div class = "employeecontainer">
+            <% employees.forEach((employee)=> { %>
+                <div>
+                <li><%= employee.name %> </li> 
+                <li><%= employee.email %> </li> 
+                <li><%= employee.gender %> </li> 
+                <li><%= employee.department %></li> 
+                <li>$<%= employee.salary %>/yr</li>
+
+               
+
+                <li  class = "buttons" style = "list-style-type: none;">
+                    <button class = "editbutton">
+                        <a href="/edit/<%= employee._id%>">Edit</a> 
+                    </button>
+        
+                    <form action="/delete/<%= employee._id %>?_method=DELETE"  method="post">
+                        <button style = "margin-bottom: 2vw" class = "deletebutton">Delete</button>
+                     </form>
+                </li>
+                </div>
+
+               <% }) %>
+                
+            </div>
+            </ul>
+            </div>
+       
+<%- include('partials/footer') -%>
+</body>
